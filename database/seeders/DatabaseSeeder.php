@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 
         $user = User::factory()->create([
             'name' => 'Jane',
-            'email' => 'jane@wp.com',
+            'email' => 'jane@wp.pl',
             'password' => Hash::make(env('USER_PASSWORD'))
         ]);
 
