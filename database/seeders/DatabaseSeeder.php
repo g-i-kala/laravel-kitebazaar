@@ -6,6 +6,8 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserRoleSeeder;
+use Illuminate\Support\Facades\Hash;
+use Silber\Bouncer\Bouncer;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,14 +18,26 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $user = User::factory()->create([
+            'name' => 'Jane',
+            'email' => 'jane@wp.com',
+            'password' => Hash::make(env('USER_PASSWORD'))
         ]);
+
+        $admin = User::factory()->create([
+            'name' => 'Admin',
+            'email' => '5star@wp.pl',
+            'password' => Hash::make(env('ADMIN_PASSWORD'))
+        ]);
+
 
         $this->call(
             UserRoleSeeder::class,
             // other seeders here
         );
+
+        $user->assign('user');
+        $admin->assign('admin');
+
     }
 }
