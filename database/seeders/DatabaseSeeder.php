@@ -20,12 +20,14 @@ class DatabaseSeeder extends Seeder
 
         $user = User::factory()->create([
             'name' => 'Jane',
+            'surname' => 'Doe',
             'email' => 'jane@wp.pl',
             'password' => Hash::make(env('USER_PASSWORD'))
         ]);
 
         $admin = User::factory()->create([
             'name' => 'Admin',
+            'surname' => 'Admin',
             'email' => '5star@wp.pl',
             'password' => Hash::make(env('ADMIN_PASSWORD'))
         ]);
