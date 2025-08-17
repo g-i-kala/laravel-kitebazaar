@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\UserDetail;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserDetailController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +21,7 @@ Route::get('/test', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/details', [UserDetailController::class, 'update'])->name('userDetail.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

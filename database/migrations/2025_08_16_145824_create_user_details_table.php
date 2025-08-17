@@ -21,7 +21,7 @@ return new class () extends Migration {
             $table->text('bio')->nullable();
             $table->string('tagline')->nullable();
             $table->json('social_links')->nullable();
-            $table->json('current_setup')->nullable();
+            $table->text('current_setup')->nullable();
             $table->string('profile_picture')->nullable();
             $table->softDeletes('deleted_at', precision: 0);
             $table->timestamps();

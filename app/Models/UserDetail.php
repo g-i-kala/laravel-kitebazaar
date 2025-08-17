@@ -13,8 +13,15 @@ class UserDetail extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $guarded = [];
+
+    protected $casts = [
+        'social_links' => 'array'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
+
 }
