@@ -24,15 +24,12 @@ class UserDetailFactory extends Factory
             'riding_style' => $this->faker->randomElement(['Freeride', 'Freestyle', 'Big Air', 'Wave', 'Foil', 'Race']),
             'bio' => $this->faker->paragraph(3),
             'tagline' => $this->faker->sentence(),
-            'social_links' => json_encode([
-                'instagram' => $this->faker->url(),
-                'facebook' => $this->faker->url(),
-            ]),
+            'social_links' => [
+                    $this->faker->url(),
+                    $this->faker->url(),
+                ],
             'profile_picture' => 'https://i.pravatar.cc/150?img=' . rand(1, 70),
-            'current_setup' => json_encode([
-                'board' => $this->faker->word(),
-                'kite' => $this->faker->word(),
-            ]),
+            'current_setup' => $this->faker->paragraph(3),
         ];
     }
 }
