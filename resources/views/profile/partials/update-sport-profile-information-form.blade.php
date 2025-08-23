@@ -74,7 +74,8 @@
             <x-input-label for="social_links" :value="__('Social Links, comma separated')" />
             <textarea id="social_links" name="social_links" rows="3"
                 class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                placeholder='e.g. www.instagram.com/yourProfie, www.facebook.com/yourAccount'>{{ old('social_links', implode(",\n", optional($userDetail)->social_links)) }}</textarea>
+                placeholder='e.g. www.instagram.com/yourProfie, www.facebook.com/yourAccount'>{{ old('social_links', $userDetail && $userDetail->social_links ? implode(",\n", optional($userDetail)->social_links) : '') }}
+                </textarea>
             <x-input-error class="mt-2" :messages="$errors->get('social_links')" />
         </div>
 
