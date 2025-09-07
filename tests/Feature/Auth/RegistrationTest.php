@@ -29,4 +29,19 @@ class RegistrationTest extends TestCase
         $this->assertAuthenticated();
         $response->assertRedirect(route('dashboard', absolute: false));
     }
+
+    public function test_proper_input_validation(): void
+    {
+        //$this->expectExceptionMessageMatches('The name field is required.');
+        $response = $this->post('/register', [
+            'surname' => 'Test Surname',
+            'email' => 'testexample.com',
+            'password' => 'passwor',
+            'password_confirmation' => 'passwot',
+        ]);
+
+        $response->assertSessionHasErrors(['name']);
+        $response->assertSessionHasErrors(['email']);
+        $response->assertSessionHasErrors(['password']);
+    }
 }
